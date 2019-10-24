@@ -1,0 +1,28 @@
+{
+  "name": "bullrack",
+  "version": "0.0.1",
+  "description": "Wraps Bull.js with and API that returns the result of a specific job",
+  "main": "jobQueue.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joewagner/bullrack.git"
+  },
+  "keywords": [
+    "bull",
+    "bull.js",
+    "queue",
+    "job"
+  ],
+  "author": "Joe Wagner",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/joewagner/bullrack/issues"
+  },
+  "homepage": "https://github.com/joewagner/bullrack#readme",
+  "dependencies": {
+    "bull": "^3.11.0"
+  }
+}
