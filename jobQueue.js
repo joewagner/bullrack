@@ -30,7 +30,7 @@ JobQueue.prototype.doJob = function (name, data) {
         this.queue.add(name, data).then(job => {
 
             const completed = (result) => {
-                // event data is alwasy passed as the result of JSON.stringify
+                // event data is always passed as the result of JSON.stringify
                 // We need to attempt to JSON.parse it
                 // NOTE: even if the result of the job is a String it's still given to JSON.stringify, 
                 //       which wraps the string in quotes, but JSON.parse must still be called to unwrap
@@ -38,9 +38,11 @@ JobQueue.prototype.doJob = function (name, data) {
                 try {
                     result = JSON.parse(result);
                 } catch (err) {
-                    console.error(err);
-                    console.log('\ncould not `JSON.parse` job result ' + job.id + '\n');
-                    console.log(result);
+                    if (process.env.DEBUG === 'bullrack') {
+                        console.error(err);
+                        console.log('\ncould not `JSON.parse` job result ' + job.id + '\n');
+                        console.log(result);
+                    }
                 }
                 resolve(result);
 
@@ -49,6 +51,7 @@ JobQueue.prototype.doJob = function (name, data) {
             };
 
             const failed = (err) => {
+                // It seems that Bull passes the error as a string
                 if (typeof err === 'string') err = new Error(err);
 
                 reject(err);

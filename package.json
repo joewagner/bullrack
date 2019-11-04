@@ -1,6 +1,6 @@
 {
   "name": "bullrack",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Wraps Bull.js with and API that returns the result of a specific job",
   "main": "jobQueue.js",
   "scripts": {
